@@ -59,6 +59,7 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <div class="bg-white p-4 rounded-lg shadow lg:col-span-2">
+
             <h2 class="text-red-500 font-semibold mb-4 text-center">Valor ($) y Valor Incapacidades Depurado por Año y Estado Incapacidad</h2>
             <div class="relative h-96">
                 <canvas id="estadoActualChart"></canvas>
@@ -66,11 +67,13 @@
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             </div>
 
+            <!-- por origen incapacidad -->
             <div class="bg-white p-4 rounded-lg shadow">
             <h2 class="text-red-500 font-semibold mb-4 text-center">Valor ($) por Origen Incapacidad</h2>
             <div class="relative h-96">
-                <canvas id="entidadResponsableChart"></canvas>
+                <canvas id="origenIncapacidadChart"></canvas>
             </div>
+
             </div>
         </div>
 
