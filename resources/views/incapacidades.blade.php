@@ -84,6 +84,7 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <!-- calendario -->
             <div class="bg-white p-4 rounded-lg shadow">
                 <h2 class="text-red-500 font-semibold mb-4 text-center">Calendario de recepción de Incapacidades</h2>
                 <div class="flex justify-between items-center mb-2">
@@ -109,7 +110,6 @@
                     <div id="calendar-days" class="col-span-7 grid grid-cols-7 gap-1"></div>
                 </div>
 
-                                <!-- filepath: c:\Users\bysay\OneDrive\Escritorio\incapacidades.col\gi-metrics-panel\resources\views\incapacidades.blade.php -->
                 <script>
                 document.addEventListener('DOMContentLoaded', function() {
                     // Variables para el calendario
@@ -308,48 +308,367 @@
                 });
                 </script>
             </div>
-
+            <!--Valor (#) por Estado Actual-->
             <div class="bg-white p-4 rounded-lg shadow">
                 <h2 class="text-red-500 font-semibold mb-4 text-center">Valor (#) por Estado Actual</h2>
                 <div class="relative h-96">
-                    <canvas id="estadoActualChart"></canvas>
+                    <canvas id="estadoActualChart" style="width: 100%; height: 100%;"></canvas>
                 </div>
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script>
+                    const estadoActualChart = document.getElementById('estadoActualChart');
 
+                    new Chart(estadoActualChart, {
+                      type: 'bar',
+                      data: {
+                        labels: ['RADICADA', 'EMPRESA', 'POR RADICAR', 'POR RADICAR / INCOMPLETAS', 'SOLICITUD DE PAGO', 'PAGADA', 'RECHAZADA', 'NEGADA', 'EMPRESA-RADICADA', 'PAGO DIRECTO'],
+                        datasets: [{
+                          label: 'Valor ($)',
+                          data: [248216169, 39026248, 7117500, 5741450, 2989350, 1971147, 1778813, 854100, 0, 0],
+                          backgroundColor: 'rgba(217, 76, 76, 1)',
+                          borderWidth: 1
+                        }]
+                      },
+                      options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                          legend: {
+                            display: false
+                          },
+                          tooltip: {
+                            callbacks: {
+                              label: function(context) {
+                                return `$${context.raw.toLocaleString()}`;
+                              }
+                            }
+                          }
+                        },
+                        scales: {
+                          x: {
+                            ticks: {
+                              callback: function(value) {
+                                return `$${value.toLocaleString()}`;
+                              },
+                              font: {
+                                size: 10 // Reduce font size for x-axis labels
+                              }
+                            },
+                            title: {
+                              display: true,
+                              text: 'Valor ($)',
+                              color: 'red'
+                            }
+                          },
+                          y: {
+                            ticks: {
+                              font: {
+                                size: 8 // Reduce font size for y-axis labels
+                              }
+                            },
+                            title: {
+                              display: true,
+                              text: 'Estado Actual',
+                              color: 'red'
+                            }
+                          }
+                        }
+                      }
+                    });
+                </script>
 
             </div>
-
+            <!-- Valor (#) por Entidad Responsable-->
             <div class="bg-white p-4 rounded-lg shadow">
                 <h2 class="text-red-500 font-semibold mb-4 text-center">Valor (#) por Entidad Responsable</h2>
                 <div class="relative h-96">
                     <canvas id="entidadResponsableChart"></canvas>
                 </div>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script>
+                    const entidadResponsableCtx = document.getElementById('entidadResponsableChart');
+
+                    new Chart(entidadResponsableCtx, {
+                      type: 'bar',
+                      data: {
+                        labels: ['Salud Total S.A.', 'EPS Sura', 'Famisanar', 'Mutual Ser', 'E.P.S Sanitas', 'Nueva EPS', 'Compensar', 'Coosalud E.S.S.', 'S.O.S. S.A. EPS', 'ARL BOLIVAR', 'Aliansalud EPS', 'Porvenir', 'Cajacopi Atl. EPS'],
+                        datasets: [{
+                          label: 'Valor ($)',
+                          data: [71476706, 50517075, 30548969, 29066700, 27415080, 26918116, 20321751, 16298533, 12738245, 8272531, 4722161, 2799550, 2005467],
+                          backgroundColor: 'rgba(217, 76, 76, 1)',
+                          borderWidth: 1
+                        }]
+                      },
+                      options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                          legend: {
+                            display: false
+                          },
+                          tooltip: {
+                            callbacks: {
+                              label: function(context) {
+                                return `$${context.raw.toLocaleString()}`;
+                              }
+                            }
+                          }
+                        },
+                        scales: {
+                          x: {
+                            ticks: {
+                              callback: function(value) {
+                                return `$${value.toLocaleString()}`;
+                              },
+                              font: {
+                                size: 10 // Reduce font size for x-axis labels
+                              }
+                            },
+                            title: {
+                              display: true,
+                              text: 'Valor ($)',
+                              color: 'red'
+                            }
+                          },
+                          y: {
+                            ticks: {
+                              font: {
+                                size: 8 // Reduce font size for y-axis labels
+                              }
+                            },
+                            title: {
+                              display: true,
+                              text: 'Entidad Responsable',
+                              color: 'red'
+                            }
+                          }
+                        }
+                      }
+                    });
+                </script>
             </div>
         </div>
 
 
-
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-            <div class="bg-white p-4 rounded-lg shadow">
-                <h2 class="text-red-500 font-semibold mb-4 text-center">Valor (#) por Entidad Responsable</h2>
-                <div class="relative h-96">
-                    <canvas id="entidadResponsableChart"></canvas>
-                </div>
-            </div>
 
+            <!--Valor (#) por Edad al Recibir Rango-->
             <div class="bg-white p-4 rounded-lg shadow">
-                <h2 class="text-red-500 font-semibold mb-4 text-center">Valor (#) por Edad al Recibir Rango</h2>
+                <h2 class="text-red-500 font-semibold mb-4 text-center">Valor ($) por Edad al Recibir Rango</h2>
                 <div class="relative h-96">
                     <canvas id="edadRangoChart"></canvas>
                 </div>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script>
+                    const edadRangoChart = document.getElementById('edadRangoChart');
+
+                    new Chart(edadRangoChart, {
+                      type: 'bar',
+                      data: {
+                        labels: ['0 a 5 Días', '6 a 15 Días', '16 a 30 Días', 'Más de 30 Días'],
+                        datasets: [{
+                          label: 'Valor ($)',
+                          data: [99830316, 129941184, 35795076, 42128201],
+                          backgroundColor: 'rgba(217, 76, 76, 1)',
+                          borderWidth: 1
+                        }]
+                      },
+                      options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                          legend: {
+                            display: false
+                          },
+                          tooltip: {
+                            callbacks: {
+                              label: function(context) {
+                                return `$${context.raw.toLocaleString()}`;
+                              }
+                            }
+                          }
+                        },
+                        scales: {
+                          x: {
+                            ticks: {
+                              callback: function(value) {
+                                return `$${value.toLocaleString()}`;
+                              },
+                              font: {
+                                size: 10 // Reduce font size for x-axis labels
+                              }
+                            },
+                            title: {
+                              display: true,
+                              text: 'Valor ($)',
+                              color: 'red'
+                            }
+                          },
+                          y: {
+                            ticks: {
+                              font: {
+                                size: 8 // Reduce font size for y-axis labels
+                              }
+                            },
+                            title: {
+                              display: true,
+                              text: 'Edad al Recibir Rango',
+                              color: 'red'
+                            }
+                          }
+                        }
+                      }
+                    });
+                </script>
             </div>
 
+
+            <!--Valor (#) por Origen-->
             <div class="bg-white p-4 rounded-lg shadow">
-                <h2 class="text-red-500 font-semibold mb-4 text-center">Valor (#) por Origen</h2>
+                <h2 class="text-red-500 font-semibold mb-4 text-center">Valor ($) por Origen</h2>
                 <div class="relative h-96">
                     <canvas id="origenChart"></canvas>
                 </div>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script>
+                    const origenChart = document.getElementById('origenChart');
+
+                    new Chart(origenChart, {
+                      type: 'bar',
+                      data: {
+                        labels: ['Enfermedad General', 'Licencia de Maternidad', 'Accidente Transito', 'Accidente Laboral', 'Licencia de Paternidad'],
+                        datasets: [{
+                          label: 'Valor ($)',
+                          data: [175020906, 93532332, 24009700, 9117174, 6014665],
+                          backgroundColor: 'rgba(217, 76, 76, 1)',
+                          borderWidth: 1
+                        }]
+                      },
+                      options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                          legend: {
+                            display: false
+                          },
+                          tooltip: {
+                            callbacks: {
+                              label: function(context) {
+                                return `$${context.raw.toLocaleString()}`;
+                              }
+                            }
+                          }
+                        },
+                        scales: {
+                          x: {
+                            ticks: {
+                              callback: function(value) {
+                                return `$${value.toLocaleString()}`;
+                              },
+                              font: {
+                                size: 10 // Reduce font size for x-axis labels
+                              }
+                            },
+                            title: {
+                              display: true,
+                              text: 'Valor ($)',
+                              color: 'red'
+                            }
+                          },
+                          y: {
+                            ticks: {
+                              font: {
+                                size: 8 // Reduce font size for y-axis labels
+                              }
+                            },
+                            title: {
+                              display: true,
+                              text: 'Origen',
+                              color: 'red'
+                            }
+                          }
+                        }
+                      }
+                    });
+                </script>
             </div>
+
+            <!--Valor (#) por Via de Atencion-->
+            <div class="bg-white p-4 rounded-lg shadow">
+                <h2 class="text-red-500 font-semibold mb-4 text-center">Valor ($) por Via de Atencion</h2>
+                <div class="relative h-96">
+                    <canvas id="viaAtencionChart"></canvas>
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script>
+                    const viaAtencionChart = document.getElementById('viaAtencionChart');
+
+                    new Chart(viaAtencionChart, {
+                      type: 'bar',
+                      data: {
+                        labels: ['Red de EPS', 'Poliza de Salud'],
+                        datasets: [{
+                          label: 'Valor ($)',
+                          data: [231173844, 76520933],
+                          backgroundColor: 'rgba(217, 76, 76, 1)',
+                          borderWidth: 1
+                        }]
+                      },
+                      options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                          legend: {
+                            display: false
+                          },
+                          tooltip: {
+                            callbacks: {
+                              label: function(context) {
+                                return `$${context.raw.toLocaleString()}`;
+                              }
+                            }
+                          }
+                        },
+                        scales: {
+                          x: {
+                            ticks: {
+                              callback: function(value) {
+                                return `$${value.toLocaleString()}`;
+                              },
+                              font: {
+                                size: 10 // Reduce font size for x-axis labels
+                              }
+                            },
+                            title: {
+                              display: true,
+                              text: 'Valor ($)',
+                              color: 'red'
+                            }
+                          },
+                          y: {
+                            ticks: {
+                              font: {
+                                size: 8 // Reduce font size for y-axis labels
+                              }
+                            },
+                            title: {
+                              display: true,
+                              text: 'Via de Atención',
+                              color: 'red'
+                            }
+                          }
+                        }
+                      }
+                    });
+                </script>
+            </div>
+
+
         </div>
 
 
