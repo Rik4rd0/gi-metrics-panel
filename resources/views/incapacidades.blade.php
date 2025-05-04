@@ -352,7 +352,7 @@
                                 return `$${value.toLocaleString()}`;
                               },
                               font: {
-                                size: 10 // Reduce font size for x-axis labels
+                                size: 10
                               }
                             },
                             title: {
@@ -364,7 +364,7 @@
                           y: {
                             ticks: {
                               font: {
-                                size: 8 // Reduce font size for y-axis labels
+                                size: 8
                               }
                             },
                             title: {
@@ -423,7 +423,7 @@
                                 return `$${value.toLocaleString()}`;
                               },
                               font: {
-                                size: 10 // Reduce font size for x-axis labels
+                                size: 10
                               }
                             },
                             title: {
@@ -435,7 +435,7 @@
                           y: {
                             ticks: {
                               font: {
-                                size: 8 // Reduce font size for y-axis labels
+                                size: 8
                               }
                             },
                             title: {
@@ -498,7 +498,7 @@
                                 return `$${value.toLocaleString()}`;
                               },
                               font: {
-                                size: 10 // Reduce font size for x-axis labels
+                                size: 10
                               }
                             },
                             title: {
@@ -510,7 +510,7 @@
                           y: {
                             ticks: {
                               font: {
-                                size: 8 // Reduce font size for y-axis labels
+                                size: 8
                               }
                             },
                             title: {
@@ -570,7 +570,7 @@
                                 return `$${value.toLocaleString()}`;
                               },
                               font: {
-                                size: 10 // Reduce font size for x-axis labels
+                                size: 10
                               }
                             },
                             title: {
@@ -582,7 +582,7 @@
                           y: {
                             ticks: {
                               font: {
-                                size: 8 // Reduce font size for y-axis labels
+                                size: 8
                               }
                             },
                             title: {
@@ -641,7 +641,7 @@
                                 return `$${value.toLocaleString()}`;
                               },
                               font: {
-                                size: 10 // Reduce font size for x-axis labels
+                                size: 10
                               }
                             },
                             title: {
@@ -653,7 +653,7 @@
                           y: {
                             ticks: {
                               font: {
-                                size: 8 // Reduce font size for y-axis labels
+                                size: 8
                               }
                             },
                             title: {
